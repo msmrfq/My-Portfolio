@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build -- --base=/
+        run: npm run build -- --base=/My-Portfolio/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
