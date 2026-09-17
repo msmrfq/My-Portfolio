@@ -112,12 +112,12 @@ export function Hero() {
                 <picture>
                   <source
                     type="image/webp"
-                    srcSet="/assets/portrait/hero-portrait-sm.webp 560w, /assets/portrait/hero-portrait.webp 1000w"
+                    srcSet={`${import.meta.env.BASE_URL}assets/portrait/hero-portrait-sm.webp 560w, ${import.meta.env.BASE_URL}assets/portrait/hero-portrait.webp 1000w`}
                     sizes="(max-width: 900px) 78vw, 38vw"
                   />
                   <img
                     className={styles.img}
-                    src="/assets/portrait/hero-portrait.webp"
+                    src={`${import.meta.env.BASE_URL}assets/portrait/hero-portrait.webp`}
                     alt={`Portrait of ${profile.name}`}
                     width={1000}
                     height={1250}
