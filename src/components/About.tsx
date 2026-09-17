@@ -14,11 +14,11 @@ export function About() {
               <picture>
                 <source
                   type="image/webp"
-                  srcSet={`${import.meta.env.BASE_URL}assets/portrait/about-portrait-sm.webp 520w, ${import.meta.env.BASE_URL}assets/portrait/about-portrait.webp 900w`}
+                  srcSet="/assets/portrait/about-portrait-sm.webp 520w, /assets/portrait/about-portrait.webp 900w"
                   sizes="(max-width: 860px) 80vw, 40vw"
                 />
                 <img
-                  src={`${import.meta.env.BASE_URL}assets/portrait/about-portrait.webp`}
+                  src="/assets/portrait/about-portrait.webp"
                   alt={`${profile.name}, portrait`}
                   width={900}
                   height={1125}
