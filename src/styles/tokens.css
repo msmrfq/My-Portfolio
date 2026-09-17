@@ -1,0 +1,84 @@
+/* ============================================================================
+   Design tokens — the single source of visual truth.
+   Classic academic prestige × restrained modern technology × editorial.
+   ========================================================================== */
+:root {
+  /* Ink — near-black charcoal with subtle variation, never flat black */
+  --ink: #0e0e11;
+  --ink-1: #101014;
+  --ink-2: #141419;
+  --ink-3: #1a1a20;
+  --ink-4: #212129;
+
+  /* Paper — warm off-white ink on dark */
+  --paper: #f2efe8;
+  --paper-90: rgba(242, 239, 232, 0.9);
+  --paper-70: rgba(242, 239, 232, 0.7);
+  --paper-55: rgba(242, 239, 232, 0.55);
+  --paper-40: rgba(242, 239, 232, 0.4);
+  --paper-25: rgba(242, 239, 232, 0.25);
+
+  /* Hairlines & rules */
+  --line: rgba(242, 239, 232, 0.1);
+  --line-2: rgba(242, 239, 232, 0.16);
+  --line-strong: rgba(242, 239, 232, 0.28);
+
+  /* Accents — restrained metallic. Champagne primary; steel for tech cues;
+     botanical warmth reserved exclusively for Pixileaf (§14). */
+  --accent: #bfa980;
+  --accent-bright: #d3bd93;
+  --accent-dim: rgba(191, 169, 128, 0.5);
+  --accent-ghost: rgba(191, 169, 128, 0.14);
+  --steel: #8b97a6;
+  --steel-ghost: rgba(139, 151, 166, 0.14);
+  --botanical: #93a67f;
+  --botanical-ghost: rgba(147, 166, 127, 0.16);
+
+  /* Typography */
+  --serif: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'Roboto Mono', monospace;
+
+  /* Fluid type scale */
+  --fs-display: clamp(3.4rem, 11.5vw, 9.5rem);
+  --fs-hero-name: clamp(3rem, 9vw, 8rem);
+  --fs-h1: clamp(2.4rem, 6vw, 5.25rem);
+  --fs-h2: clamp(1.9rem, 4vw, 3.25rem);
+  --fs-h3: clamp(1.4rem, 2.4vw, 2rem);
+  --fs-lead: clamp(1.05rem, 1.5vw, 1.3rem);
+  --fs-body: clamp(1rem, 1.05vw, 1.075rem);
+  --fs-sm: 0.9rem;
+  --fs-label: 0.72rem;
+  --fs-micro: 0.66rem;
+
+  /* Spacing & layout */
+  --maxw: 1300px;
+  --gutter: clamp(1.25rem, 5vw, 5.5rem);
+  --section-pad: clamp(5.5rem, 13vh, 11rem);
+  --radius: 3px;
+  --radius-lg: 6px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-inout: cubic-bezier(0.65, 0.05, 0.36, 1);
+  --dur-fast: 0.25s;
+  --dur: 0.55s;
+  --dur-slow: 0.9s;
+
+  /* Elevation — soft, restrained */
+  --shadow-float: 0 34px 70px -34px rgba(0, 0, 0, 0.75);
+  --shadow-lift: 0 18px 44px -22px rgba(0, 0, 0, 0.7);
+
+  /* Chrome */
+  --nav-h: 68px;
+}
+
+/* Tabular, technical micro-label — the "institutional coordinate" voice */
+.mono-label {
+  font-family: var(--mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--paper-40);
+  font-feature-settings: 'tnum' 1;
+}

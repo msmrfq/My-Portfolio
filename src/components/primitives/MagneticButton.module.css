@@ -1,0 +1,75 @@
+.wrap {
+  display: inline-block;
+  will-change: transform;
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95em 1.7em;
+  border-radius: var(--radius);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition:
+    background var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease);
+}
+
+.inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+/* Solid — warm paper chip that warms to champagne on hover */
+.solid {
+  background: var(--paper);
+  color: var(--ink);
+}
+.solid:hover {
+  background: var(--accent-bright);
+  box-shadow: var(--shadow-lift);
+}
+
+/* Ghost — hairline outline */
+.ghost {
+  border: 1px solid var(--line-strong);
+  color: var(--paper);
+}
+.ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent-bright);
+  background: var(--accent-ghost);
+}
+
+/* Link — inline, arrow-led, with a drawn underline */
+.link {
+  padding: 0.3em 0;
+  letter-spacing: 0.12em;
+  color: var(--paper);
+}
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-fast) var(--ease);
+}
+.link:hover {
+  color: var(--accent-bright);
+}
+.link:hover::after {
+  transform: scaleX(1);
+}

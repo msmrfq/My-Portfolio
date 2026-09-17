@@ -1,0 +1,8 @@
+node_modules
+dist
+_source
+*.local
+.DS_Store
+Thumbs.db
+_v_*.png
+_p_*.png

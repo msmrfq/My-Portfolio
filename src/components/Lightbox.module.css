@@ -1,0 +1,199 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(6, 6, 8, 0.82);
+  backdrop-filter: blur(8px);
+}
+
+.dialog {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.9fr);
+  width: min(1040px, 100%);
+  max-height: min(88vh, 780px);
+  background: var(--ink-1);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-float);
+  overflow: hidden;
+}
+
+.close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  color: var(--paper);
+  background: rgba(14, 14, 18, 0.72);
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.close:hover {
+  background: var(--ink-3);
+  border-color: var(--accent);
+}
+
+/* ---- Image stage ---- */
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  background:
+    repeating-conic-gradient(var(--ink-2) 0% 25%, var(--ink-1) 0% 50%) 50% / 22px 22px;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+}
+.figure {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+.image {
+  max-width: 100%;
+  max-height: min(72vh, 680px);
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.8);
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--paper);
+  background: rgba(14, 14, 18, 0.72);
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.nav:hover {
+  background: var(--ink-3);
+  border-color: var(--accent);
+}
+.navPrev {
+  left: 0.75rem;
+}
+.navNext {
+  right: 0.75rem;
+}
+.counter {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  translate: -50% 0;
+  font-family: var(--mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.12em;
+  color: var(--paper-70);
+  background: rgba(14, 14, 18, 0.72);
+  border: 1px solid var(--line-2);
+  border-radius: 100px;
+  padding: 0.25rem 0.7rem;
+}
+
+.placeholder {
+  text-align: center;
+  color: var(--paper-55);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 30ch;
+}
+
+/* ---- Meta panel ---- */
+.meta {
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border-left: 1px solid var(--line);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  margin-top: 0.6rem;
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--paper);
+}
+.issuer {
+  margin-top: 0.85rem;
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--paper-70);
+}
+.note {
+  margin-top: 1rem;
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+  color: var(--paper-55);
+}
+
+.thumbs {
+  margin-top: auto;
+  padding-top: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.thumb {
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--ink-2);
+  opacity: 0.6;
+  transition: opacity var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.thumb:hover {
+  opacity: 0.9;
+}
+.thumbActive {
+  opacity: 1;
+  border-color: var(--accent);
+}
+
+@media (max-width: 760px) {
+  .dialog {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1fr) auto;
+    max-height: 90vh;
+  }
+  .meta {
+    border-left: none;
+    border-top: 1px solid var(--line);
+    max-height: 40vh;
+  }
+  .image {
+    max-height: 46vh;
+  }
+}

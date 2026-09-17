@@ -1,0 +1,25 @@
+.head {
+  max-width: 62ch;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.head[data-align='center'] {
+  margin-inline: auto;
+  text-align: center;
+}
+.head[data-align='center'] .top {
+  justify-content: center;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.title {
+  margin-top: 1.1rem;
+}
+
+.body {
+  margin-top: 1.25rem;
+}

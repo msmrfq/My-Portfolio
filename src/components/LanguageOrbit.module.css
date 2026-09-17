@@ -1,0 +1,240 @@
+.stage {
+  position: relative;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  aspect-ratio: 1;
+  isolation: isolate;
+}
+
+/* ---- Central count ---- */
+.core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  width: clamp(150px, 26%, 210px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: radial-gradient(circle at 40% 34%, var(--ink-3), var(--ink-1) 72%);
+}
+.coreNum {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 500;
+  line-height: 0.9;
+  color: var(--paper);
+  font-feature-settings: 'tnum' 1;
+}
+.coreLabel {
+  margin-top: 0.4rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.coreSub {
+  font-family: var(--mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper-40);
+}
+
+/* ---- Orbit ring guide ---- */
+.stage::before {
+  content: '';
+  position: absolute;
+  inset: 13%;
+  border-radius: 50%;
+  border: 1px dashed var(--line);
+  opacity: 0.6;
+}
+
+/* ---- Nodes ---- */
+.orbit {
+  position: absolute;
+  inset: 0;
+  list-style: none;
+  z-index: 2;
+}
+.node {
+  position: absolute;
+  translate: -50% -50%;
+  transition: opacity var(--dur) var(--ease);
+}
+.node.dim {
+  opacity: 0.32;
+}
+
+.orb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.9rem 1rem;
+  min-width: 96px;
+  background: rgba(18, 18, 22, 0.86);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-lg);
+  color: var(--paper);
+  cursor: pointer;
+  transition:
+    transform var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+.node.active .orb {
+  transform: scale(1.08);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lift);
+}
+
+.glyph {
+  font-family: var(--serif);
+  line-height: 1;
+  color: var(--accent);
+}
+/* Tier drives visual weight only (§7) — never a percentage. */
+.node[data-tier='1'] .glyph {
+  font-size: 1.9rem;
+}
+.node[data-tier='2'] .glyph {
+  font-size: 1.5rem;
+  color: var(--steel);
+}
+.node[data-tier='3'] .glyph {
+  font-size: 1.25rem;
+  color: var(--paper-55);
+}
+.node[data-tier='1'] .orb {
+  border-color: var(--line-strong);
+}
+
+.name {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+/* Level + descriptor: present in DOM always; revealed on hover/focus. */
+.detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows var(--dur) var(--ease);
+}
+.detail > * {
+  min-height: 0;
+}
+.node.active .detail {
+  grid-template-rows: 1fr;
+}
+.level {
+  font-family: var(--mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  padding-top: 0.3rem;
+}
+.descriptor {
+  display: block;
+  max-width: 15ch;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: var(--paper-55);
+  padding-top: 0.2rem;
+}
+
+/* ---- Mobile: orbit → list (§28) ---- */
+@media (max-width: 720px) {
+  .stage {
+    aspect-ratio: auto;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .stage::before {
+    display: none;
+  }
+  .core {
+    position: static;
+    translate: none;
+    width: 100%;
+    aspect-ratio: auto;
+    border: none;
+    border-radius: 0;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.9rem;
+    padding: 1.4rem;
+    background: rgba(18, 18, 22, 0.72);
+  }
+  .coreNum {
+    font-size: 2.2rem;
+  }
+  .coreLabel,
+  .coreSub {
+    margin: 0;
+  }
+  .orbit {
+    position: static;
+    inset: auto;
+    display: contents;
+  }
+  .node {
+    position: static !important;
+    translate: none;
+    left: auto !important;
+    top: auto !important;
+    opacity: 1 !important;
+    background: rgba(18, 18, 22, 0.72);
+  }
+  .orb {
+    width: 100%;
+    min-width: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.4rem;
+    background: none;
+    backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    transform: none !important;
+    box-shadow: none !important;
+    text-align: left;
+  }
+  .glyph {
+    min-width: 2.5rem;
+    text-align: center;
+  }
+  .name {
+    flex: 1;
+  }
+  .detail {
+    grid-template-rows: 1fr;
+  }
+  .level,
+  .descriptor {
+    padding-top: 0;
+  }
+  .descriptor {
+    text-align: right;
+  }
+}

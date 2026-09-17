@@ -1,0 +1,29 @@
+{
+  "name": "masum-rafique-portfolio",
+  "version": "1.0.0",
+  "description": "Masum Rafique — Medicine · Technology · Enterprise. Interactive single-page portfolio.",
+  "type": "module",
+  "scripts": {
+    "assets": "node scripts/process-assets.mjs",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "Masum Rafique",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "framer-motion": "^11.11.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.2",
+    "sharp": "^0.35.3",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8"
+  }
+}

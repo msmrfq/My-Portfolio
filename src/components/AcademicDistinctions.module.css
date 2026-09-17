@@ -1,0 +1,204 @@
+.layout {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  align-items: start;
+}
+
+.centerCell {
+  display: flex;
+}
+
+/* ---- Centerpiece document ---- */
+.center {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+  color: var(--paper);
+  background:
+    linear-gradient(155deg, var(--ink-3), var(--ink-1) 68%);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: default;
+  transition:
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+button.center {
+  cursor: pointer;
+}
+button.center:hover,
+button.center:focus-visible {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-float);
+}
+
+/* diagonal light sweep on hover (motion-gated) */
+.sweep {
+  position: absolute;
+  top: -60%;
+  left: -30%;
+  width: 60%;
+  height: 220%;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(211, 189, 147, 0.16),
+    transparent
+  );
+  transform: translateX(-120%) rotate(8deg);
+  opacity: 0;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  button.center:hover .sweep,
+  button.center:focus-visible .sweep {
+    opacity: 1;
+    animation: sweep 1.1s var(--ease);
+  }
+}
+@keyframes sweep {
+  0% {
+    transform: translateX(-120%) rotate(8deg);
+  }
+  100% {
+    transform: translateX(360%) rotate(8deg);
+  }
+}
+
+.centerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.seal {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-dim);
+  background: radial-gradient(circle at 40% 35%, var(--accent-ghost), transparent 70%);
+  position: relative;
+}
+.seal::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-dim);
+}
+
+.centerTitle {
+  margin-top: 1.75rem;
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.4vw, 2.9rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+.centerIssuer {
+  margin-top: 1rem;
+  font-size: var(--fs-lead);
+  line-height: 1.45;
+  color: var(--accent);
+}
+.centerDetail {
+  margin-top: 0.75rem;
+  max-width: 44ch;
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--paper-70);
+}
+
+.highlights {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+}
+.highlights li {
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--paper-90);
+  border: 1px solid var(--line-2);
+  border-radius: 100px;
+  padding: 0.4rem 0.85rem;
+  background: rgba(242, 239, 232, 0.03);
+}
+
+.viewHint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.75rem;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--paper);
+  border-bottom: 1px solid var(--accent-dim);
+  padding-bottom: 3px;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+button.center:hover .viewHint,
+button.center:focus-visible .viewHint {
+  color: var(--accent-bright);
+  border-color: var(--accent);
+}
+
+/* ---- Side cards ---- */
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+.card {
+  height: 100%;
+  padding: clamp(1.5rem, 2.6vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--ink-2);
+  transition: border-color var(--dur) var(--ease);
+}
+.card:hover {
+  border-color: var(--line-strong);
+}
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+}
+.cardTitle {
+  margin-top: 1rem;
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--paper);
+}
+.cardIssuer {
+  margin-top: 0.6rem;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--accent);
+}
+.cardDetail {
+  margin-top: 0.7rem;
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+  color: var(--paper-55);
+}
+
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}

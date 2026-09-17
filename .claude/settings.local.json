@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(awk -F'\\\\t' '$1>8000')",
+      "Bash(PYTHONIOENCODING=utf-8 PYTHONUTF8=1 python -c ' *)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(node scripts/process-assets.mjs)",
+      "Bash(node -e ' *)",
+      "Bash(rm -f *)",
+      "Bash(npx tsc *)",
+      "Bash(curl -s \"http://localhost:5173/src/components/Hero.tsx\")",
+      "Bash(curl -s \"http://localhost:5173/src/main.tsx\")",
+      "Bash(npm run *)",
+      "Bash(grep -iE '^\\\\.git$|vercel|netlify|\\\\.env|wrangler|firebase|supabase|Dockerfile')",
+      "Bash(node -e \"console.log\\(Object.keys\\(require\\('./package.json'\\).scripts\\).join\\(', '\\)\\)\")",
+      "Bash(node -e \"const p=require\\('./package.json'\\);console.log\\('deps:',Object.keys\\(p.dependencies||{}\\).join\\(', '\\)\\);console.log\\('dev:',Object.keys\\(p.devDependencies||{}\\).join\\(', '\\)\\)\")"
+    ]
+  }
+}

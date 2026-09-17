@@ -1,0 +1,154 @@
+.grid {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.cell {
+  display: flex;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition:
+    transform var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+
+/* Pixileaf (§14) — the single place botanical warmth is permitted. */
+.card[data-motif='botanical'] {
+  color: var(--botanical);
+}
+.card[data-motif='botanical'] .name {
+  color: var(--paper);
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: var(--line-strong);
+    box-shadow: var(--shadow-lift);
+  }
+  .card:hover svg,
+  .card:focus-within svg {
+    transform: scale(1.05);
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(1.5rem, 2.6vw, 2.25rem);
+}
+
+.top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.name {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  font-weight: 500;
+  line-height: 1;
+  color: var(--paper);
+}
+
+.category {
+  margin-top: 0.7rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.card[data-motif='botanical'] .category {
+  color: var(--botanical);
+}
+
+.desc {
+  margin-top: 1rem;
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--paper-70);
+}
+
+.foot {
+  margin-top: auto;
+  padding-top: 1.6rem;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--paper);
+  border-bottom: 1px solid var(--accent-dim);
+  padding-bottom: 3px;
+  transition:
+    color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+.arrow {
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+/* CTA reveal on hover for pointer devices; always shown otherwise (§27–29). */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .foot {
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+      opacity var(--dur) var(--ease),
+      transform var(--dur) var(--ease);
+  }
+  .card:hover .foot,
+  .card:focus-within .foot {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (hover: hover) {
+  .cta:hover {
+    color: var(--accent-bright);
+    border-color: var(--accent);
+  }
+  .cta:hover .arrow {
+    transform: translate(2px, -2px);
+  }
+}
+
+.status {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--paper-40);
+  border: 1px solid var(--line-2);
+  border-radius: 100px;
+  padding: 0.35rem 0.8rem;
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
